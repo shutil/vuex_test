@@ -1,18 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>Vuex counter app</h1>
+    <h1>{{ get_counter }}</h1>
+    <button @click="inc">+1</button>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import { mapGetters,mapActions } from 'vuex';
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  methods:{
+    ...mapActions({
+      inc:'home_page_store/incCounterAction'
+    })
+  },
+  mounted:function () {
+    console.log(this.$store);
+  },
+  computed:{
+    ...mapGetters({
+      get_counter:'home_page_store/getCounter'
+    })
   }
+  
 }
 </script>
 
